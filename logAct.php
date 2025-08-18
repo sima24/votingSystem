@@ -13,6 +13,7 @@ if(mysqli_num_rows($run1)>0){
     if ($password === $row['password']) {
         session_start();
         $_SESSION['name'] = $row['name'];
+        $_SESSION['user_id'] = $row['id']; 
        header("Location: dashboard.php");
         exit;
     } else {

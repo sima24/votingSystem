@@ -50,14 +50,15 @@ if (!isset($_SESSION['admin_name'])) {
         <!-- Symbol -->
         <div class="mb-3">
           <label class="form-label">Symbol</label>
-          <input type="file" name="symbol" class="form-control" accept="image/*"  required onChange="previewImage(event,'previewSymbol')">
-          <img id="previewSymbol" class="d-none" alt="" >
+          <input type="file" name="symbol" class="form-control" accept="image/*"  required onChange="previewImage(event,'previewSymbol1')">
+          <img id="previewSymbol1" class="d-none" height="120px" width="120px" alt="" >
         </div>
 
         <!-- Image -->
         <div class="mb-3">
           <label class="form-label">Agent Image</label>
-          <input type="file" name="image" class="form-control" accept="image/*" required>
+          <input type="file" name="image" class="form-control" accept="image/*" required onChange="previewImage(event,'previewSymbol2')">
+          <img id="previewSymbol2" class="d-none" height="120px" width="120px" alt="" >
         </div>
 
         <!-- Submit Button -->

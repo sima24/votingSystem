@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration - Create Account</title>
+    <link rel="stylesheet" href="assets/bootstrap-5/css/bootstrap.min.css">
+
     <style>
         * {
             margin: 0;
@@ -345,7 +347,7 @@
             <div class="logo-section">
                 <div class="logo">R</div>
                 <h1>Create Account</h1>
-                <p class="subtitle">Join us and start your journey</p>
+                
             </div>
 
             <div class="success-message" id="success-message">
@@ -353,7 +355,7 @@
             </div>
 
             <form class="row g-3" id="regi" action="regAct.php" method="post">
-                <div class="col-md-6">
+                <div class="">
                     <div class="form-group">
                         <label for="name" class="form-label">Full Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name">
@@ -361,7 +363,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="">
                     <div class="form-group">
                         <label for="email" class="form-label">Email Address</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
@@ -369,7 +371,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="">
                     <div class="form-group">
                         <label for="Password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="Password" name="password" placeholder="Create a password">
@@ -377,7 +379,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="">
                     <div class="form-group">
                         <label for="dob" class="form-label">Date of Birth</label>
                         <input type="date" class="form-control" id="dob" name="dob">
@@ -385,7 +387,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="">
                     <div class="form-group">
                         <label for="mobile" class="form-label">Mobile Number</label>
                         <input type="number" class="form-control" id="mobile" name="mobile" placeholder="Enter 10-digit mobile">
@@ -393,7 +395,7 @@
                     </div>
                 </div>
 
-                <div class="gender-section">
+                <div class="gender-section form-group">
                     <label>Gender</label>
                     <div>
                         <div class="form-check form-check-inline">
@@ -411,6 +413,7 @@
                     </div>
                     <span class="error" id="gender-err"></span>
                 </div>
+                
 
                 <div class="address-section">
                     <div class="address-legend">Address Information</div>
@@ -453,7 +456,10 @@
                         <div class="loading" id="loading"></div>
                         <span id="btn-text">Create Account</span>
                     </button>
+                    Already have an account?
+                     <a href="login.php" >  log in here</a>
                 </div>
+                 
             </form>
         </div>
     </div>
@@ -522,26 +528,26 @@
                 }
 
                 if (!isValid) {
-                    e.preventDefault(); // stop submission if errors
+                    e.preventDefault(); 
                 } else {
-                    // Show loading state
+                    
                     $('#submit').prop('disabled', true);
                     $('#loading').show();
                     $('#btn-text').text('Creating Account...');
                     
-                    // Show success message after a delay
+                    
                     setTimeout(() => {
                         $('#success-message').show();
                         
-                        // Reset button state
+                        
                         $('#submit').prop('disabled', false);
                         $('#loading').hide();
                         $('#btn-text').text('Create Account');
                         
-                        // In real application, form would submit here
+                        
                         setTimeout(() => {
                             alert("please wait !");
-                            // Form will submit normally since we don't prevent default here
+                           
                         }, 1000);
                     }, 1000);
                 }
