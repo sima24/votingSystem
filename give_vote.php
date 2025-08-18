@@ -22,7 +22,7 @@ if (isset($_POST['vote_submit']) && !$has_voted) {
     $agent_id = $_POST['agent_id'];
     $user_id  = $_SESSION['user_id'];
 
-    // Prepare insert query
+   
     $stmt = $conn->prepare("INSERT INTO votes (user_id, agent_id, vote_time) VALUES (?, ?, NOW())");
     $stmt->bind_param("ii", $user_id, $agent_id);
 

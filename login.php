@@ -460,7 +460,7 @@
                 form.submit();
             });
 
-            // Add shake animation for form validation errors
+            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes shake {

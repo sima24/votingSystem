@@ -61,10 +61,6 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 }
 ?>
-
-
-
-
   <form action="update_profile.php" method="POST" enctype="multipart/form-data">
       <div class="mb-3">
       <img src="../image/<?php echo $row['image']; ?>" alt="Profile Picture" class="profile-pic mb-2" id="preview">

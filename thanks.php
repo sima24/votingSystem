@@ -225,19 +225,14 @@
     
     <script>
         function goBack() {
-            // You can customize this behavior based on your needs:
-            
-            // Option 1: Go back to previous page
+           
+          
             window.history.back();
             
-            // Option 2: Go to a specific URL (uncomment and modify as needed)
-            // window.location.href = 'index.html';
-            
-            // Option 3: Go to voting page (uncomment and modify as needed)
-            // window.location.href = 'voting.html';
+           
         }
         
-        // Optional: Add some extra confetti on page load
+       
         setTimeout(() => {
             const container = document.querySelector('.thank-you-container');
             for (let i = 0; i < 20; i++) {
