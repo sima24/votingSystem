@@ -15,6 +15,7 @@ if(!isset($_SESSION['admin_name'])){
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
     <style>
@@ -331,6 +332,20 @@ if(!isset($_SESSION['admin_name'])){
             70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
             100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
         }
+        .settings-btn{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 35px;
+            font-weight:600;
+            cursor: pointer;
+            color: #fff;
+        }
+        .settings-btn:hover {
+            color: #0d6efd;
+        }
     </style>
 </head>
 <body>
@@ -343,7 +358,7 @@ if(!isset($_SESSION['admin_name'])){
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-list text-white fs-3"></i>
+                <i class="bi bi-list text-white fs-3 pt-1"></i>
             </button>
             
             <a class="navbar-brand text-white" href="#">
@@ -376,7 +391,10 @@ if(!isset($_SESSION['admin_name'])){
         <h1 class="welcome-text">
             Welcome <span class="welcome-name"><?php echo $_SESSION['admin_name']; ?></span>
         </h1>
-
+        <button class="settings-btn" onclick="openSettings()">
+            <span class="fs-5 fw-bold">Settings</span>
+            <i class="fa fa-cog"></i>   
+        </button>
         <!-- Dashboard Features Section -->
         <div class="container-fluid">
             <div class="row g-4">
@@ -454,6 +472,8 @@ if(!isset($_SESSION['admin_name'])){
                 </div>
             </div>
         </div>
+
+        
     </div>
 
     <!-- Scripts -->
@@ -483,6 +503,10 @@ if(!isset($_SESSION['admin_name'])){
                 });
             });
         });
+
+        function openSettings() {
+            window.location.href = "settings.php"; // redirect to settings page
+        }
     </script>
 
     <style>
@@ -502,5 +526,6 @@ if(!isset($_SESSION['admin_name'])){
             }
         }
     </style>
+
 </body>
 </html>

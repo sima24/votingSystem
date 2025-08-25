@@ -61,6 +61,12 @@ if (!isset($_SESSION['admin_name'])) {
           <img id="previewSymbol2" class="d-none" height="120px" width="120px" alt="" >
         </div>
 
+        <!-- status -->
+        <select name="status" class="form-control">
+          <option value="Active" selected>Active</option>
+          <option value="disactive">Inactive</option>
+        </select>
+
         <!-- Submit Button -->
         <div class="text-end">
           <button type="submit" class="btn btn-success">Add Agent</button>

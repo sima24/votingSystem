@@ -29,6 +29,8 @@ if ($image) {
 }
 
 if ($stmt->execute()) {
+    $_SESSION['admin_name'] = $name;
+    $_SESSION['admin_img']  = $imageName;
    echo "<script>
          alert('Profile updated successfully!');
          window.location.href='admin.php';

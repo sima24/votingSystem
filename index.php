@@ -6,6 +6,13 @@
     <title>Registration - Create Account</title>
     <link rel="stylesheet" href="assets/bootstrap-5/css/bootstrap.min.css">
 
+    <?php
+        include('db_conn.php');
+        $sql="select voter_age from settings where id=1";
+        $result=mysqli_query($conn,$sql);
+        $row=mysqli_fetch_assoc($result);
+    ?>
+
     <style>
         * {
             margin: 0;
@@ -467,6 +474,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
+            var db_age="<?php echo $row['voter_age']; ?>"
             $('#regi').on('submit', function (e) {
                 let isValid = true;
 
@@ -501,8 +509,9 @@
                     const today = new Date();
                     const birth = new Date(dob);
                     const age = today.getFullYear() - birth.getFullYear();
-                    if (age < 18) {
-                        $('#dob-err').text('Age must be greater than 18 years.');
+
+                    if (age < db_age) {
+                        $('#dob-err').text('Age must be greater than '+db_age+' years.');
                         isValid = false;
                     }
                 } else {

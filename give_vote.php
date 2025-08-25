@@ -2,10 +2,34 @@
 include 'db_conn.php';
 session_start();
 
+// Check if voting is open (date + time)
+function checktime(){
+    global $conn;
+    $check_voting = "SELECT * FROM settings 
+                 WHERE id = 1 
+                   AND CURDATE() BETWEEN s_date AND e_date
+                   AND CURTIME() BETWEEN s_time AND e_time";
+
+$voting_result = mysqli_query($conn, $check_voting);
+
+if (mysqli_num_rows($voting_result) == 0) {
+    // Voting not allowed now
+    echo "<script>
+            alert('Voting is not allowed at this time.');
+            window.location.href='dashboard.php';
+          </script>";
+    exit();
+}
+
+}
+checktime();
+
+
 if(!isset($_SESSION['name'])){
     echo "<script> alert('Please login first'); window.location.href='login.php'; </script>";
     exit();
 }
+
 
 
 $user_id=$_SESSION['user_id'];
@@ -18,7 +42,11 @@ $result = $stmt->get_result();
 $has_voted = $result->num_rows > 0;
 
 if (isset($_POST['vote_submit']) && !$has_voted) {
-    session_start();
+
+    //checking if the vote has given within the valid ttime 
+    checktime();
+
+
     $agent_id = $_POST['agent_id'];
     $user_id  = $_SESSION['user_id'];
 
@@ -41,7 +69,7 @@ if (isset($_POST['vote_submit']) && !$has_voted) {
 
 
 
-$agent_query = "SELECT * FROM agent ORDER BY party_name ASC";
+$agent_query = "SELECT * FROM agent where status='active' ORDER BY party_name ASC ";
 $agent_result = mysqli_query($conn, $agent_query);
 ?>
 <!DOCTYPE html>

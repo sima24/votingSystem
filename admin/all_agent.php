@@ -30,6 +30,8 @@ if (!isset($_SESSION['admin_name'])) {
             <th>Party Name</th>
             <th>Symbol</th>
             <th>Image</th>
+            <th>status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <?php
@@ -48,9 +50,19 @@ if (!isset($_SESSION['admin_name'])) {
                 echo "<td>".$row['party_name']."</td>";
                 echo "<td><img src='../image/" . $row['symbol'] . "' width='60' height='60' class='rounded-circle border' alt='Symbol'></td>";
                 echo "<td><img src='../image/" . $row['image'] . "' width='60' height='60' class='rounded-circle border' alt='Symbol'></td>";
-                echo  "</tr>";  
+                echo "<td>".$row['status']."</td>";
+              echo "<td>
+        <a href='edit_agent.php?id={$row['id']}'><button type='button' class='btn btn-success'>Edit</button></a>
+        <a href='delete_agent.php?id={$row['id']}' onclick=\"return confirm('Are you sure?')\">
+            <button type='button' class='btn btn-danger'>Delete</button>
+        </a>
+      </td>
+              </tr>";
+
+                 
             }
             ?>
+             
 
         </tbody>
       </table>
